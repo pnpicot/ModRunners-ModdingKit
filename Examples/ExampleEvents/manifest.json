@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleEvents",
+    "Name": "Example: Events",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "Shows what happens in a match as it happens: each round's start and winner, each runner going out, and the end of the match.",
+    "Assembly": "ExampleEvents.dll",
+    "Capabilities": ["Observe", "Present"]
+}

@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleOptions",
+    "Name": "Example: Options",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "One option of each kind, which together show a line of text on the screen. F4 shows or hides it.",
+    "Assembly": "ExampleOptions.dll",
+    "Capabilities": ["Present"]
+}

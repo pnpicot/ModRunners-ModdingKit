@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleItem",
+    "Name": "Example: Item",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "Adds a pistol to the item pickups: three quick shots that fly straight ahead. Its odds are a lobby option the host decides.",
+    "Assembly": "ExampleItem.dll",
+    "Capabilities": ["Present", "Gameplay"]
+}

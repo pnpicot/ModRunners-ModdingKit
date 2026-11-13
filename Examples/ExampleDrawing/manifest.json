@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleDrawing",
+    "Name": "Example: Drawing",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "Draws a logo on the main menu, and each of your runners' speed above its head.",
+    "Assembly": "ExampleDrawing.dll",
+    "Capabilities": ["Observe", "Present"]
+}

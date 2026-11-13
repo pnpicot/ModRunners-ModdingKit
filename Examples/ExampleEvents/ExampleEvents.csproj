@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- The game's folder, where ModRunners is installed. Change it if SpeedRunners is installed elsewhere. -->
+        <GameFolder>C:\Program Files (x86)\Steam\steamapps\common\SpeedRunners</GameFolder>
+    </PropertyGroup>
+
+    <!-- The Api ships with ModRunners, so a mod never carries its own copy. The documentation next to it shows in the editor. -->
+    <ItemGroup>
+        <Reference Include="ModRunners.Api">
+            <HintPath>$(GameFolder)\ModRunners\ModRunners.Api.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+
+    <!-- Building for .NET Framework 4.8 without Visual Studio, with the newer C# features. -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+        <PackageReference Include="PolySharp" Version="1.16.0" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- The files the mod's folder holds besides its dll. Add the mod's own, such as images, as ModFile items. -->
+    <ItemGroup>
+        <ModFile Include="manifest.json" />
+        <ModFile Include="icon.png" Condition="Exists('icon.png')" />
+    </ItemGroup>
+
+    <!-- Each build goes to ModRunners/Mods/<project name>/, ready for the game's next start. -->
+    <Target Name="CopyToGame" AfterTargets="Build">
+        <Copy
+            SourceFiles="$(TargetPath);@(ModFile)"
+            DestinationFolder="$(GameFolder)\ModRunners\Mods\$(MSBuildProjectName)"
+            SkipUnchangedFiles="true" />
+    </Target>
+
+</Project>

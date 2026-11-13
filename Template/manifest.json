@@ -1,0 +1,9 @@
+{
+    "Id": "ModRunnersMod",
+    "Name": "MOD_DISPLAY_NAME",
+    "Version": "1.0.0",
+    "Author": "MOD_AUTHOR",
+    "Description": "What the mod does, as players read it in the Mod Browser.",
+    "Assembly": "ModRunnersMod.dll",
+    "Capabilities": ["Observe"]
+}

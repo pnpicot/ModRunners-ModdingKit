@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleHello",
+    "Name": "Example: Hello",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "The smallest mod: it writes one line in the log when it loads.",
+    "Assembly": "ExampleHello.dll",
+    "Capabilities": ["Observe"]
+}

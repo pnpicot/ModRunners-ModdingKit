@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleTiles",
+    "Name": "Example: Tiles",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "Repaints the levels in dark blue, with an outline around the tiles and pink marks on the ones you can grapple or wall jump on.",
+    "Assembly": "ExampleTiles.dll",
+    "Capabilities": ["Present"]
+}

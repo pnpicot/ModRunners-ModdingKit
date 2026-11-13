@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Blackomodo",
+    "classifications": ["SpeedRunners", "ModRunners", "Mod"],
+    "identity": "ModRunners.Mod",
+    "name": "ModRunners mod",
+    "shortName": "modrunners-mod",
+    "description": "A SpeedRunners mod for ModRunners. Each build goes straight to the game's ModRunners/Mods folder.",
+    "sourceName": "ModRunnersMod",
+    "preferNameDirectory": true,
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "symbols": {
+        "gameFolder": {
+            "type": "parameter",
+            "datatype": "text",
+            "description": "The SpeedRunners folder, where ModRunners is installed.",
+            "defaultValue": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SpeedRunners",
+            "replaces": "GAME_FOLDER"
+        },
+        "modName": {
+            "type": "parameter",
+            "datatype": "text",
+            "description": "The mod's name, as players read it.",
+            "defaultValue": "My Mod",
+            "replaces": "MOD_DISPLAY_NAME"
+        },
+        "modAuthor": {
+            "type": "parameter",
+            "datatype": "text",
+            "description": "The mod's author, as players read it.",
+            "defaultValue": "Me",
+            "replaces": "MOD_AUTHOR"
+        }
+    }
+}

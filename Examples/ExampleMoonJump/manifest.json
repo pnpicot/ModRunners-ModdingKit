@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleMoonJump",
+    "Name": "Example: Moon Jump",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "Press M during a round for five seconds of moon gravity. In a modded lobby, the other players see your runner float too.",
+    "Assembly": "ExampleMoonJump.dll",
+    "Capabilities": ["Gameplay"]
+}
