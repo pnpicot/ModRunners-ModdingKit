@@ -3,7 +3,7 @@
 ## What you need
 
 - **SpeedRunners with ModRunners installed,** from the ModRunners Discord server. Your mod is built against the Api that ModRunners installed, in `<game>/ModRunners/ModRunners.Api.dll`, so it always matches the version you play with.
-- **The .NET SDK,** version 8 or newer: https://dotnet.microsoft.com/download. Visual Studio is not needed. Any editor works, and Visual Studio Code with the C# Dev Kit or JetBrains Rider show the Api's documentation as you type.
+- **The .NET SDK,** version 8 or newer: https://dotnet.microsoft.com/download. Visual Studio is not needed. Any editor works, and Visual Studio Code with the C# Dev Kit or JetBrains Rider show the Api's documentation as you type. It is also in the [reference](../Reference/ModRunners.Api.md).
 
 Mods target .NET Framework 4.8 (the version used by the game). The template sets that up, and still lets you use recent C#.
 

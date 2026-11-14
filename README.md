@@ -1,6 +1,6 @@
 # ModRunners modding kit
 
-ModRunners lets players run mods in SpeedRunners. This repository is everything you need to make one: a template, example mods, and this guide.
+ModRunners lets players run mods in SpeedRunners. This repository is everything you need to make one: a template, example mods, this guide, and the Api's reference.
 
 A mod is a small C# library built against the ModRunners Api. ModRunners loads it when the game starts, and the Api gives it the game as players know it: lobbies, matches, runners, items, tiles, settings, the screen to draw on. A mod never touches the game's code itself.
 
@@ -30,6 +30,10 @@ Start the game: on a clean install the main menu says "loaded (1 mod)", and `Mod
 7. [Multiplayer](Guide/Multiplayer.md): how online play works with mods, lobby options and messages between games.
 8. [Publishing](Guide/Publishing.md): uploading your mod, getting it validated for online play, and new versions.
 9. [Troubleshooting](Guide/Troubleshooting.md): logs, the console, and the usual mistakes.
+
+## The reference
+
+[Every type and member of the Api](Reference/ModRunners.Api.md), by namespace, with its documentation. It is the same documentation your editor shows as you type, for the latest ModRunners version.
 
 ## The examples
 

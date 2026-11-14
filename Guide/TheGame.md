@@ -1,6 +1,6 @@
 # The game
 
-`context.Game` is the game as players know it. Every type and member has its documentation in your editor: hover over it to read what it does and when.
+`context.Game` is the game as players know it. Every type and member has its documentation in your editor: hover over it to read what it does and when. The [reference](../Reference/ModRunners.Api.md) has the same documentation, to browse without a project.
 
 ## A few rules first
 
