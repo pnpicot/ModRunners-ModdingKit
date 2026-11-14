@@ -13,6 +13,7 @@ public sealed class RunnerActedEventArgs : EventArgs
 | [Action](RunnerActedEventArgs/Action.md) { get; } |  |
 | [IsDecidedHere](RunnerActedEventArgs/IsDecidedHere.md) { get; } | Whether this game decides it: the runner is played from this game. Each other game sees it in its own simulation of the runner, which follows the runner's game closely but can differ: a jump or a landing a frame apart, or a stumble it saw and the runner's game did not. |
 | [Runner](RunnerActedEventArgs/Runner.md) { get; } |  |
+| [Tackler](RunnerActedEventArgs/Tackler.md) { get; } | The runner that tackled it, for Tackled. Null for the other actions. |
 
 ## See Also
 

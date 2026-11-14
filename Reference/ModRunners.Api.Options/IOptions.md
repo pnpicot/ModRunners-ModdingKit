@@ -13,6 +13,7 @@ public interface IOptions
 | [Lobby](IOptions/Lobby.md) { get; } | The options that set how the mod plays, which a modded lobby's host decides for every game. In a lobby another game hosts, they take the host's values, read-only on the options page, until the game leaves it. Options that only concern the player, such as keys and colors, belong to the mod's own options instead. |
 | [Choice&lt;T&gt;](IOptions/Choice.md)(…) | One of the values of an enum. The options page shows each value's name with spaces between its words. |
 | [Color](IOptions/Color.md)(…) | An opaque color. |
+| [Group](IOptions/Group.md)(…) | Options the options page shows together, under a tab of their own named *label*. Once the mod has options in two tabs, the options declared outside any group are under a tab named General. The tabs are in the order of their first option. |
 | [Key](IOptions/Key.md)(…) | A key of the keyboard. None is no key. |
 | [Number](IOptions/Number.md)(…) | A number from *min* to *max*, in steps of *step* from *min*. A value between two steps is rounded to the nearest. |
 | [OnOff](IOptions/OnOff.md)(…) | An option that is on or off. |

@@ -24,6 +24,7 @@ public interface IRunner
 | [IsFrozen](IRunner/IsFrozen.md) { get; } | Frozen by the ice. |
 | [IsInAir](IRunner/IsInAir.md) { get; } | In the air: from a jump, a fall or a swing until it lands. |
 | [IsInSuperBoost](IRunner/IsInSuperBoost.md) { get; } | Thrown by a super boost or a bounce pad, its inputs ignored. |
+| [IsKnockedOut](IRunner/IsKnockedOut.md) { get; } | Knocked out in the current round: thrown up and falling, out of the race, until the camera eliminates it as it leaves the view (KnockedOut). Spikes, saws and lasers knock runners out in a ranked match or with the Lethal Spikes modifier, and [`KnockOut`](./IRunner/KnockOut.md) in any match. |
 | [IsOut](IRunner/IsOut.md) { get; } | Eliminated in the current round. The runner stays where it went out, hidden, until the next round. |
 | [IsSliding](IRunner/IsSliding.md) { get; } | Sliding, on the ground or in the air. |
 | [IsSwinging](IRunner/IsSwinging.md) { get; } | Swinging from its grapple's hook, caught on a grapple ceiling. |
@@ -51,6 +52,7 @@ public interface IRunner
 | [Freeze](IRunner/Freeze.md)(…) | Freezes the runner, as the ice does, for a time: it slides to a stop and cannot act. Freezing a frozen runner starts its freeze again. |
 | [GiveItem](IRunner/GiveItem.md)(…) | Gives the runner an item in place of the one it holds, as an item pickup does. |
 | [GiveModItem](IRunner/GiveModItem.md)(…) | Gives the runner a mod's item in place of the one it holds, as an item pickup does. |
+| [KnockOut](IRunner/KnockOut.md)() | Knocks the runner out, as a lethal spike does: it lets go of its hooks, is thrown up, falls through the level, and is eliminated as soon as it leaves the view. It works in any match, not only where the game makes hazards lethal. |
 | [MoveTo](IRunner/MoveTo.md)(…) | Moves the runner so that it stands at a point, as the game places the runners between rounds: it stops, and lets go of its hook and its golden hook. The point is not checked: a runner moved into the terrain is pushed out of it by its collisions. |
 | [RemoveItem](IRunner/RemoveItem.md)() | Takes the runner's item away without using it, as using it would. A runner keeps its item when it is eliminated, and into the next rounds. |
 | [Revive](IRunner/Revive.md)() | Brings an eliminated runner back into the round, as the game does for every runner at the next round, but where it went out and without resetting it. It is shown again, collides with the level again, and its player controls it from the next frame. Move it with [`MoveTo`](./IRunner/MoveTo.md), since it went out off camera or below the level. |

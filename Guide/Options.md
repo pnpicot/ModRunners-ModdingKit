@@ -40,6 +40,26 @@ color.Changed += (_, e) => context.Log.Write($"From {e.Previous} to {e.Current}"
 
 See [ExampleOptions](../Examples/ExampleOptions).
 
+## Groups
+
+A mod with many options can group them. Each group gets its own tab on the options page:
+
+```csharp
+var speed = context.Options.Group("Speedometer");
+var colors = context.Options.Group("Colors");
+
+var isShown = speed.OnOff("Shown", "Show the speed", true);
+var tiles = colors.Color("Tiles", "Tiles", new Color(12, 16, 58));
+```
+
+- Calling `Group` again with the same label gives the same tab.
+- Tabs are in the order of their first option. Players switch tabs with Page Up and Page Down, the shoulder buttons, or a click.
+- Options declared outside any group go under a tab named General. With a single tab, the page shows no tabs at all.
+- Ids must be unique across the whole mod, not just within a group. Moving an option to another group keeps its saved value.
+- `speed.Lobby` declares lobby options under the same tab.
+
+Groups need ModRunners 0.2 or later.
+
 ## Lobby options
 
 Options that change how the game plays must be the same on every game of a match. Declare them on `context.Options.Lobby` instead:

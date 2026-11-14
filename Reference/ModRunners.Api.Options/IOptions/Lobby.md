@@ -8,7 +8,7 @@ public IOptions Lobby { get; }
 
 ## Remarks
 
-While the host's value applies, setting [`Value`](../IOption-1/Value.md) keeps the value for when the game leaves the lobby, and [`Changed`](../IOption-1/Changed.md) is raised whenever the value in effect changes. The lobby options' own `Lobby` is themselves.
+While the host's value applies, setting [`Value`](../IOption-1/Value.md) keeps the value for when the game leaves the lobby, and [`Changed`](../IOption-1/Changed.md) is raised whenever the value in effect changes. The lobby options' own `Lobby` is themselves. The `Lobby` of a [`Group`](./Group.md) declares into that group.
 
 ## See Also
 

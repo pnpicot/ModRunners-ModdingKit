@@ -25,7 +25,7 @@ public enum RunnerAction
 | HookReleased | `12` | Let go of its hook, flying or locked, whatever the reason. |
 | HookBroken | `13` | Its hook broke, on a surface it cannot catch or from a shockwave. It is released next. |
 | Stumbled | `14` | Hit an obstacle, a box or a fall tile, and lost most of its speed. |
-| Tackled | `15` | Was tackled by a sliding or drilling runner, and lost most of its speed. |
+| Tackled | `15` | Was tackled by a sliding or drilling runner, and lost most of its speed. The tackler is [`Tackler`](./RunnerActedEventArgs/Tackler.md). |
 | TumbleStarted | `16` | Started tumbling from a hit, such as an item or a lethal obstacle. |
 | TumbleEnded | `17` |  |
 | Bounced | `18` | Bounced off a bounce pad. |

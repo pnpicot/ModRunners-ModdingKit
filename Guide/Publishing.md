@@ -11,7 +11,7 @@ Read the rules in #rules on the Discord server first: they say what a mod may do
     dotnet build -c Release
     ```
 
-3. **Start the game,** open the Mods page under **Replays** on the main menu, select your mod, and press **Upload**.
+3. **Start the game,** open the Mods page under **Replays** on the main menu, select your mod, and press **Publish**, then **Confirm publish**.
 
 The upload is your mod's folder in `ModRunners/Mods/`, exactly as it is: keep only your mod's files in it. ModRunners signs you in with your Steam account, and the service checks the upload:
 

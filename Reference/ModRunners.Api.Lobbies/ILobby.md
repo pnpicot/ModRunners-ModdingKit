@@ -14,7 +14,9 @@ public interface ILobby
 | [HostedSlotCount](ILobby/HostedSlotCount.md) { get; set; } | How many slots the custom matches and practice matches against bots that this game hosts have, from 4, the game's, to 128. A change applies from the next of those lobbies. |
 | [IsHost](ILobby/IsHost.md) { get; } | Whether this game hosts the lobby: it leads the rounds, deciding when each ends and who wins it. True for a lobby played alone. |
 | [Mode](ILobby/Mode.md) { get; } | The game mode, or null when the player is on none of the lobby and match screens. |
+| [PointsToWin](ILobby/PointsToWin.md) { get; set; } | The points that win a match for a runner playing alone: 3, unless a mod sets it, from 1 to 5. Each slot without a team mate plays to it, unless it has its own ([`PointsToWin`](./ISlot/PointsToWin.md)). |
 | [Slots](ILobby/Slots.md) { get; } | Every slot of the lobby: four, or as many as the host of a custom match or a practice match chose ([`HostedSlotCount`](./ILobby/HostedSlotCount.md)). |
+| [TeamPointsToWin](ILobby/TeamPointsToWin.md) { get; set; } | The points that win a match for a team, which shares one score: 4, unless a mod sets it, from 1 to 5. Each slot with a team mate plays to it, unless it has its own ([`PointsToWin`](./ISlot/PointsToWin.md)). |
 | event [Closed](ILobby/Closed.md) | Raised on the game's thread when the player leaves a lobby, whichever way: from the character selection, from a match's pause menu, or by joining another game. A lobby stays open during its matches. |
 | event [ReadyChanged](ILobby/ReadyChanged.md) | Raised on the game's thread when a slot gets ready in the character selection, or cancels. It is raised as the change happens, before the slot holds it, so read the new value from the event. |
 | event [SlotChanged](ILobby/SlotChanged.md) | Raised on the game's thread at the end of a frame when a slot got or lost its player or bot, whichever game plays it. Not raised as a lobby opens or closes. |
