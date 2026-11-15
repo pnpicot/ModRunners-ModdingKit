@@ -12,6 +12,7 @@ public interface IMatch
 | --- | --- |
 | [AllowsFreezingBots](IMatch/AllowsFreezingBots.md) { get; set; } | Whether the game offers to freeze the bots once no player is left in a round of an offline match. True by default. The offer freezes every bot but the front one for 10 seconds, so the round ends sooner. |
 | [CameraArea](IMatch/CameraArea.md) { get; } | The part of the level the camera keeps the runners in, in level units: a runner left outside it is eliminated. It is the whole screen until sudden death shrinks it, leaving the sudden death borders around it. Null outside a match. |
+| [FrameTime](IMatch/FrameTime.md) { get; } | The game time the round's last frame took: how much [`RoundTime`](./IMatch/RoundTime.md) grew at the last [`Updated`](./IMatch/Updated.md). It is zero from GO until the round's first frame. |
 | [IsOver](IMatch/IsOver.md) { get; } | Whether the match is over: its last round is won. It stays true through the results, until the game leaves the match. |
 | [IsRoundInPlay](IMatch/IsRoundInPlay.md) { get; } | A round is being played: from GO until its end starts, with the winner's slow motion. False during the countdowns, while the game is paused, and outside a match. |
 | [RoundTime](IMatch/RoundTime.md) { get; } | The game time since the current or last round's GO. It stops while the game is paused, and goes back to zero at each GO. |
@@ -20,9 +21,12 @@ public interface IMatch
 | [SuddenDeathColor](IMatch/SuddenDeathColor.md) { get; } | The color the game shows the sudden death borders in now. It pulses between the two colors of the graphics settings. |
 | [XpScreen](IMatch/XpScreen.md) { get; } | The XP screen, from [`Ended`](./IMatch/Ended.md) until the game leaves the match. Null otherwise, and when the game shows none: in the tutorial, while a replay is watched, and in arcade mode. |
 | event [Ended](IMatch/Ended.md) | Raised on the game's thread once the match is over and its last round's banner is gone, as the results begin: about 3 seconds after the last round's points, on each game at its own pace. The [`XpScreen`](./IMatch/XpScreen.md) is open, with its lines not shown yet, so changes to them show from the start. |
+| event [LiningUp](IMatch/LiningUp.md) | Raised on the game's thread, on every game, as each round's runners line up at the start, so that a handler can choose their order ([`Order`](./LineUpEventArgs/Order.md)): for the first round, just after [`Started`](./IMatch/Started.md), the runners at the level's start; for the next ones, as the last round's end places them, just before [`RoundEnded`](./IMatch/RoundEnded.md), after the last round too. It is not raised while a replay plays. |
 | event [RoundEnded](IMatch/RoundEnded.md) | Raised on the game's thread at the end of each round, once the points are given and every runner is placed and reset for the next round, the eliminated ones back in. It is raised after the last round too. |
 | event [RoundStarted](IMatch/RoundStarted.md) | Raised on the game's thread at each round's GO, as the runners start moving. |
+| event [RoundWon](IMatch/RoundWon.md) | Raised on the game's thread, on every game, when a round ends with a winner, as the winner's slow motion starts. It comes before the round winner banner and before the points are given, so a handler can change how many points the win gives ([`Points`](./RoundWonEventArgs/Points.md)). |
 | event [RunnerOut](IMatch/RunnerOut.md) | Raised on the game's thread each time a runner is eliminated, by this game or by the game of its player. |
+| event [Started](IMatch/Started.md) | Raised on the game's thread when a match's first countdown starts, once its level is built. It is not raised for a Solo run. Rules a mod sets here, such as the points to win, apply from the match's first round. |
 | event [Updated](IMatch/Updated.md) | Raised on the game's thread at each frame of a round, after the game has checked the race and the eliminations, the winner's slow motion included. |
 
 ## See Also

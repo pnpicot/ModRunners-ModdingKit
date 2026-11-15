@@ -1,6 +1,6 @@
 # ISlot.Teammate property
 
-The other slot of its team, or null when it plays alone. A team shares one score.
+The other slot of its team when its team is a pair, or null when it plays alone or in a larger team ([`Team`](./Team.md)). A team shares one score.
 
 ```csharp
 public ISlot? Teammate { get; }

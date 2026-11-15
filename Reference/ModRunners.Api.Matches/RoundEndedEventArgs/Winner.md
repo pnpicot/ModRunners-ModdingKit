@@ -1,6 +1,6 @@
 # RoundEndedEventArgs.Winner property
 
-The slot whose runner won the round, or null for a round that ended without a winner. A team's point goes to both of its slots ([`Teammate`](../../ModRunners.Api.Lobbies/ISlot/Teammate.md)).
+The slot whose runner won the round, or null for a round that ended without a winner. A team's points go to every slot of the team ([`Team`](../../ModRunners.Api.Lobbies/ISlot/Team.md)).
 
 ```csharp
 public ISlot? Winner { get; }

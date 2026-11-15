@@ -1,6 +1,6 @@
 # TileOutline structure
 
-A line drawn inside a tile along each of its faces that touches air: an empty tile, the empty half of a slope, or the outside of the map. It runs around each cluster of tiles. The game's tiles have none.
+A line drawn inside a tile along its edges that touch air: an empty tile, the transparent part of a tile's drawing, such as the empty half of a slope, or the outside of the map. It runs around each cluster of tiles without a break, along faces, slopes and corners. The game's tiles have none.
 
 ```csharp
 public struct TileOutline
@@ -17,7 +17,7 @@ public struct TileOutline
 
 ## Remarks
 
-It follows the tiles' collision shapes, which are their drawings except on the stepped and checkered slopes. A tile without an outline still closes its neighbors' outline, and a face with a border is never outlined.
+It follows the tiles' drawings, but runs straight along a slope's diagonal, through the steps of the stepped slopes, since runners slide on that diagonal. A checkered area counts as drawn: it is outlined as a whole, without its checkered slopes' diagonals. The white marks of grapple ceilings and wall-jump faces are never covered, nor are the gaps between a wall-jump face's dashes, but the line runs along the rest of a marked tile. A tile without an outline still closes its neighbors' outline.
 
 ## See Also
 

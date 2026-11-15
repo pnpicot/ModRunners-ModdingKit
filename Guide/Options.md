@@ -60,6 +60,28 @@ var tiles = colors.Color("Tiles", "Tiles", new Color(12, 16, 58));
 
 Groups need ModRunners 0.2 or later.
 
+## Lists
+
+A list option holds items the player adds and removes, each made of fields of the kinds above. Declare its fields on the list, then its default items:
+
+```csharp
+var bands = context.Options.List("SpeedBands", "Speed colors", maxItems: 10);
+var speed = bands.Number("Speed", "Up to speed", 0, 0, 1500, 10);
+var color = bands.Color("Color", "Color", new Color(255, 255, 255));
+
+bands.SortedBy(speed);
+bands.AddDefault(band => band.Set(speed, 200).Set(color, new Color(255, 255, 255)));
+bands.AddDefault(band => band.Set(speed, 450).Set(color, new Color(63, 242, 236)));
+```
+
+- Read the items with `bands.Items`, and each value with `item.Get(field)`. `Changed` is raised when the player edits the list.
+- Each field keeps its kind's rules, so a number stays in its range: the player cannot make an invalid item.
+- `SortedBy` keeps the items in the order of a number, choice, key or text field, and no two items can share its value. Without it, items stay in the order the player puts them in: new items go at the end, and Up and Down move them.
+- The options page shows the list in its tab, inside a frame: each item as a card with its fields and its buttons, and Add. While the player edits a sorted list, its items stay where they are on the page, and take their order once the player leaves the list. `Items` is always sorted.
+- Declare the fields and default items in `OnLoad`, before reading `Items`.
+
+Lists need ModRunners 0.3 or later.
+
 ## Lobby options
 
 Options that change how the game plays must be the same on every game of a match. Declare them on `context.Options.Lobby` instead:

@@ -53,6 +53,16 @@ match.RoundEnded += (_, e) => context.Log.Write($"{e.Winner?.Name ?? "Nobody"} w
 
 `match.Updated` is raised at each frame of a round, after the game has moved the runners: the place for anything that has to follow the race closely. `context.Drawing.Draw` is raised at every frame, in rounds or not. See [ExampleEvents](../Examples/ExampleEvents).
 
+`match.FrameTime` is the game time of that frame. It stops while the game is paused and slows down with the winner's slow motion, so use it rather than a `Stopwatch` for anything timed during a round.
+
+`match.Started` is raised once per match, at its first countdown: the place to settle the match's rules, such as `Lobby.PointsToWin`. `match.RoundWon` is raised as a round's end starts, before its points are given, and sets how many it gives:
+
+```csharp
+match.RoundWon += (_, e) => e.Points = lastOutWasKnockedOut ? 2 : 1;
+```
+
+These need ModRunners 0.3 or later.
+
 ## Rules and exceptions
 
 Many things work as a rule for everyone, with exceptions for some:

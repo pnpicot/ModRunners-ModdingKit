@@ -94,6 +94,7 @@
 | interface [IOpenLobbies](./ModRunners.Api.Lobbies/IOpenLobbies.md) | The quick match, ranked and custom lobbies other players host, as Steam lists them for this game's player. |
 | interface [IOpenLobby](./ModRunners.Api.Lobbies/IOpenLobby.md) | A lobby another player hosts and a player of this game could join, as its host advertises it. The same lobby is the same object in every search of the session. |
 | interface [ISlot](./ModRunners.Api.Lobbies/ISlot.md) | One of the places of a lobby, for a player or a bot. |
+| interface [ITeam](./ModRunners.Api.Lobbies/ITeam.md) | A team of the lobby: slots that play together. |
 | enum [LobbyDistance](./ModRunners.Api.Lobbies/LobbyDistance.md) | How far an open lobby is, by the nearest of Steam's search distances that finds it. |
 | class [SlotChangedEventArgs](./ModRunners.Api.Lobbies/SlotChangedEventArgs.md) | A slot got or lost its player or bot. |
 | [Flags] enum [SlotOptions](./ModRunners.Api.Lobbies/SlotOptions.md) | The options of an empty slot in the character selection of a custom match or a local party, which only the lobby's host sees. |
@@ -106,9 +107,11 @@
 | interface [IMatch](./ModRunners.Api.Matches/IMatch.md) | The match being played: its rounds, each from GO until every runner is placed for the next one. Story levels, the tutorial and local parties are matches too. A Solo run is not: it has no rounds. |
 | interface [IXpLine](./ModRunners.Api.Matches/IXpLine.md) | A line of the XP screen's panel: its text, and the XP it pays in the panel's left column. |
 | interface [IXpScreen](./ModRunners.Api.Matches/IXpScreen.md) | The XP screen ("Points!!!") the game shows after a match: a panel with its title, its lines and the total, then the level bar, the new unlocks and, in a ranked match, the ranked progress. Each game shows its own player's, and every game moves on when the host's timer ends. |
+| class [LineUpEventArgs](./ModRunners.Api.Matches/LineUpEventArgs.md) | The runners about to start a round, from the back of the start line to its front, in an order a handler can change. |
 | enum [OutCause](./ModRunners.Api.Matches/OutCause.md) | How a runner went out of a round. Every elimination is the camera's: the game keeps no cause, so it is read from the runner as it goes out. |
 | class [RoundEndedEventArgs](./ModRunners.Api.Matches/RoundEndedEventArgs.md) | A round that ended: its points are given, and every runner is placed for the next one. |
 | enum [RoundWinnerBanner](./ModRunners.Api.Matches/RoundWinnerBanner.md) | What the game does with its banner when a round is won: the winner's portrait slides across the screen with its points, and the new point pops in, on the banner and in the HUD. |
+| class [RoundWonEventArgs](./ModRunners.Api.Matches/RoundWonEventArgs.md) | A round that was just won: its winner, and how many points the win gives. |
 | class [RunnerOutEventArgs](./ModRunners.Api.Matches/RunnerOutEventArgs.md) | A runner eliminated from the round. |
 | class [XpAward](./ModRunners.Api.Matches/XpAward.md) | An XP award the XP screen pays: the match's result, a feat of the match, or a daily bonus. |
 | enum [XpLineKind](./ModRunners.Api.Matches/XpLineKind.md) | What a line of the XP screen's panel shows. |
@@ -132,6 +135,10 @@
 
 | public type | description |
 | --- | --- |
+| interface [IListField&lt;T&gt;](./ModRunners.Api.Options/IListField-1.md) | A field of a list's items, as declared with [`IListOption`](./ModRunners.Api.Options/IListOption.md). |
+| interface [IListItem](./ModRunners.Api.Options/IListItem.md) | One item of a list option ([`Items`](./ModRunners.Api.Options/IListOption/Items.md)). |
+| interface [IListItemValues](./ModRunners.Api.Options/IListItemValues.md) | The values of a default item being declared ([`AddDefault`](./ModRunners.Api.Options/IListOption/AddDefault.md)). |
+| interface [IListOption](./ModRunners.Api.Options/IListOption.md) | An option that is a list: the player adds, removes and reorders its items, up to [`MaxItems`](./ModRunners.Api.Options/IListOption/MaxItems.md), and each item has the fields the mod declares on the list. Its fields and its default items are declared in [`OnLoad`](./ModRunners.Api/IMod/OnLoad.md), before its items are read. |
 | interface [IOption&lt;T&gt;](./ModRunners.Api.Options/IOption-1.md) | One of the mod's options, as declared with [`IOptions`](./ModRunners.Api.Options/IOptions.md). |
 | interface [IOptions](./ModRunners.Api.Options/IOptions.md) | The mod's options, which the player edits in the game. Each is declared in [`OnLoad`](./ModRunners.Api/IMod/OnLoad.md), in the order the options page shows them, and its value is saved between starts. |
 | class [OptionChangedEventArgs&lt;T&gt;](./ModRunners.Api.Options/OptionChangedEventArgs-1.md) | An option's value, before and after a change. |
@@ -197,7 +204,7 @@
 | public type | description |
 | --- | --- |
 | interface [ITiles](./ModRunners.Api.Tiles/ITiles.md) | How tiles look, on every map: their palette, the thickness of their borders and their outline. Each is a rule for every tile type, and a type can have its own as an exception. A change shows from the next frame, on the map being played too. |
-| struct [TileOutline](./ModRunners.Api.Tiles/TileOutline.md) | A line drawn inside a tile along each of its faces that touches air: an empty tile, the empty half of a slope, or the outside of the map. It runs around each cluster of tiles. The game's tiles have none. |
+| struct [TileOutline](./ModRunners.Api.Tiles/TileOutline.md) | A line drawn inside a tile along its edges that touch air: an empty tile, the transparent part of a tile's drawing, such as the empty half of a slope, or the outside of the map. It runs around each cluster of tiles without a break, along faces, slopes and corners. The game's tiles have none. |
 | struct [TilePalette](./ModRunners.Api.Tiles/TilePalette.md) | The two colors a tile is drawn with. The game's tiles are black, their main color, with white marks, their secondary color, on the faces that do something: a grapple ceiling's bottom edge, a wall jump face. |
 | enum [TileType](./ModRunners.Api.Tiles/TileType.md) | What a tile does to runners and hooks. Every tile is solid. The level editor offers 16 tiles, and several of them are drawings of one type, such as the plain, stepped and checkered slopes. |
 

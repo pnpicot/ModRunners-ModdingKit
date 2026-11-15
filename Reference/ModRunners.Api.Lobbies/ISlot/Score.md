@@ -1,10 +1,22 @@
 # ISlot.Score property
 
-The points it scored in the match, its team's for a team. Given when a round ends ([`RoundEnded`](../../ModRunners.Api.Matches/IMatch/RoundEnded.md)).
+The points it scored in the match, or its team's for a team. A round's points are given when it ends ([`RoundEnded`](../../ModRunners.Api.Matches/IMatch/RoundEnded.md)), and [`RoundWon`](../../ModRunners.Api.Matches/IMatch/RoundWon.md) decides how many.
 
 ```csharp
-public int Score { get; }
+public int Score { get; set; }
 ```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentOutOfRangeException | The value set is below 0 or above 255. |
+
+## Remarks
+
+Setting it also sets its teammates' scores, and updates the HUD's point icons at once. The game only ends a match when a round is won, so a score set at or above [`PointsToWin`](./PointsToWin.md) ends the match the next time the slot wins a round. Every match starts at 0.
+
+Each game copies a runner's score from the game of its player, so a score set for a slot that another game plays is overwritten by that game's. Set the same score on every game, for example from the match's events or a mod message.
 
 ## See Also
 

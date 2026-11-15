@@ -1,6 +1,6 @@
 # ILobby.PointsToWin property
 
-The points that win a match for a runner playing alone: 3, unless a mod sets it, from 1 to 5. Each slot without a team mate plays to it, unless it has its own ([`PointsToWin`](../ISlot/PointsToWin.md)).
+The points that win a match for a runner playing alone: 3, unless a mod sets it, from 1 to 255. Each slot without a team plays to it, unless it has its own ([`PointsToWin`](../ISlot/PointsToWin.md)).
 
 ```csharp
 public int PointsToWin { get; set; }
@@ -10,11 +10,11 @@ public int PointsToWin { get; set; }
 
 | exception | condition |
 | --- | --- |
-| ArgumentOutOfRangeException | The value is below 1 or above 5: the HUD and the round winner banner show at most five points. |
+| ArgumentOutOfRangeException | The value is below 1 or above 255, the most a score holds. |
 
 ## Remarks
 
-A change applies at once, the HUD's point icons included. It lasts until the player leaves the lobby ([`Closed`](./Closed.md)), then the game's 3 is back. Nothing is sent: in a modded lobby, every game sets the same, as from a lobby option, since each game ends the match itself.
+A change applies at once, the HUD's point icons included. The HUD's cards and the round winner banner show up to six points as stars, and more as a star with the score written on it and the points to win beside it. It lasts until the player leaves the lobby ([`Closed`](./Closed.md)), then the game's 3 is back. Nothing is sent: in a modded lobby, every game sets the same, as from a lobby option, since each game ends the match itself.
 
 ## See Also
 

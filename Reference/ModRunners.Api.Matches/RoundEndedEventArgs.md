@@ -10,7 +10,8 @@ public sealed class RoundEndedEventArgs : EventArgs
 
 | name | description |
 | --- | --- |
-| [Winner](RoundEndedEventArgs/Winner.md) { get; } | The slot whose runner won the round, or null for a round that ended without a winner. A team's point goes to both of its slots ([`Teammate`](../ModRunners.Api.Lobbies/ISlot/Teammate.md)). |
+| [Points](RoundEndedEventArgs/Points.md) { get; } | How many points the [`Winner`](./RoundEndedEventArgs/Winner.md) got for the round, as [`RoundWon`](./IMatch/RoundWon.md) set them. It is 0 when the round has no winner, or when the winner was knocked out at the end. |
+| [Winner](RoundEndedEventArgs/Winner.md) { get; } | The slot whose runner won the round, or null for a round that ended without a winner. A team's points go to every slot of the team ([`Team`](../ModRunners.Api.Lobbies/ISlot/Team.md)). |
 
 ## See Also
 

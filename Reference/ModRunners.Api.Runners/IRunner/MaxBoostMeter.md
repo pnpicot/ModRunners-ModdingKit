@@ -1,6 +1,6 @@
 # IRunner.MaxBoostMeter property
 
-What its boost meter can hold: [`MaxMeter`](../IBoostRules/MaxMeter.md), halved for the golden variant, and the sum of both teammates' in a team.
+What its boost meter can hold: [`MaxMeter`](../IBoostRules/MaxMeter.md), halved for the golden variant, and the sum of its team's runners' when they share one ([`TeamsShareBoost`](../../ModRunners.Api.Lobbies/ILobby/TeamsShareBoost.md)).
 
 ```csharp
 public float MaxBoostMeter { get; }

@@ -16,11 +16,14 @@ public interface ISlot
 | [IsLocal](ISlot/IsLocal.md) { get; } | Played from this game: by a player on this computer, or by one of their bots. |
 | [IsReady](ISlot/IsReady.md) { get; } | The slot pressed Ready in the character selection. False on every other screen. |
 | [Name](ISlot/Name.md) { get; } | The name the game shows for the slot: its player's Steam name, followed by a number when the player's game has several players, or its character's name for a bot, such as "River Runner". Empty for a slot nobody plays. |
-| [PointsToWin](ISlot/PointsToWin.md) { get; set; } | The points that win the match for this slot: the lobby's [`PointsToWin`](./ILobby/PointsToWin.md), or [`TeamPointsToWin`](./ILobby/TeamPointsToWin.md) with a team mate, unless a mod gives it its own, from 1 to 5. A round's winner wins the match once its score reaches its own slot's value. |
+| [PointsToWin](ISlot/PointsToWin.md) { get; set; } | The points that win the match for this slot: the lobby's [`PointsToWin`](./ILobby/PointsToWin.md), or its team's ([`TeamPointsToWin`](./ILobby/TeamPointsToWin.md)), unless a mod gives it its own, from 1 to 255. A round's winner wins the match once its score reaches its own slot's value. |
 | [Runner](ISlot/Runner.md) { get; } | The slot's runner. Null before the match's first countdown, after the slot's player left, outside matches, and for an empty slot. |
-| [Score](ISlot/Score.md) { get; } | The points it scored in the match, its team's for a team. Given when a round ends ([`RoundEnded`](../ModRunners.Api.Matches/IMatch/RoundEnded.md)). |
-| [Teammate](ISlot/Teammate.md) { get; } | The other slot of its team, or null when it plays alone. A team shares one score. |
+| [Score](ISlot/Score.md) { get; set; } | The points it scored in the match, or its team's for a team. A round's points are given when it ends ([`RoundEnded`](../ModRunners.Api.Matches/IMatch/RoundEnded.md)), and [`RoundWon`](../ModRunners.Api.Matches/IMatch/RoundWon.md) decides how many. |
+| [Team](ISlot/Team.md) { get; } | The slot's team, or null when it plays alone. |
+| [Teammate](ISlot/Teammate.md) { get; } | The other slot of its team when its team is a pair, or null when it plays alone or in a larger team ([`Team`](./ISlot/Team.md)). A team shares one score. |
 | [AddBot](ISlot/AddBot.md)(…) | Puts a bot in the slot, as its Add Bot option does: a random character no other slot has, or one another slot has when none is left. The bot is played from this game, and gets ready when this game's players do. |
+| [JoinTeam](ISlot/JoinTeam.md)(…) | Puts the slot in the team *number*, as its team button would. |
+| [LeaveTeam](ISlot/LeaveTeam.md)() | Takes the slot out of its team, so that it plays alone. |
 | [ResetPointsToWin](ISlot/ResetPointsToWin.md)() | Gives the slot the lobby's points to win again, instead of its own. |
 
 ## See Also

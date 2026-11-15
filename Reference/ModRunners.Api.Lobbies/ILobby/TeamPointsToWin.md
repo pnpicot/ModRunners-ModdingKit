@@ -1,6 +1,6 @@
 # ILobby.TeamPointsToWin property
 
-The points that win a match for a team, which shares one score: 4, unless a mod sets it, from 1 to 5. Each slot with a team mate plays to it, unless it has its own ([`PointsToWin`](../ISlot/PointsToWin.md)).
+The points that win a match for a team of two, which shares one score: 4, unless a mod sets it, from 1 to 255. Each slot of a pair plays to it, unless it has its own ([`PointsToWin`](../ISlot/PointsToWin.md)). A numbered team of more than two ([`MaxTeamSize`](./MaxTeamSize.md)) plays to 1 more point for each member past two, up to 255.
 
 ```csharp
 public int TeamPointsToWin { get; set; }
@@ -10,7 +10,7 @@ public int TeamPointsToWin { get; set; }
 
 | exception | condition |
 | --- | --- |
-| ArgumentOutOfRangeException | The value is below 1 or above 5. |
+| ArgumentOutOfRangeException | The value is below 1 or above 255. |
 
 ## Remarks
 

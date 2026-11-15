@@ -1,6 +1,6 @@
 # ISlot.PointsToWin property
 
-The points that win the match for this slot: the lobby's [`PointsToWin`](../ILobby/PointsToWin.md), or [`TeamPointsToWin`](../ILobby/TeamPointsToWin.md) with a team mate, unless a mod gives it its own, from 1 to 5. A round's winner wins the match once its score reaches its own slot's value.
+The points that win the match for this slot: the lobby's [`PointsToWin`](../ILobby/PointsToWin.md), or its team's ([`TeamPointsToWin`](../ILobby/TeamPointsToWin.md)), unless a mod gives it its own, from 1 to 255. A round's winner wins the match once its score reaches its own slot's value.
 
 ```csharp
 public int PointsToWin { get; set; }
@@ -10,11 +10,11 @@ public int PointsToWin { get; set; }
 
 | exception | condition |
 | --- | --- |
-| ArgumentOutOfRangeException | The value set is below 1 or above 5: the HUD and the round winner banner show at most five points. |
+| ArgumentOutOfRangeException | The value set is below 1 or above 255, the most a score holds. |
 
 ## Remarks
 
-Its own value applies at once, the HUD's point icons included, whoever plays the slot, until [`ResetPointsToWin`](./ResetPointsToWin.md) or the player leaves the lobby. A team's members share one score, so give both the same.
+Its own value applies at once, the HUD's point icons included, whoever plays the slot, until [`ResetPointsToWin`](./ResetPointsToWin.md) or the player leaves the lobby. A team's members share one score, so give them all the same.
 
 Nothing is sent: in a modded lobby, every game sets the same. Set during a match at or below the slot's score, it ends the match at the slot's next round win, but the game's XP screen then counts no match won.
 
