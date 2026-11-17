@@ -12,6 +12,7 @@ public interface IIce
 | --- | --- |
 | [BeamColor](IIce/BeamColor.md) { get; set; } | The color of every runner's beam and charge: cyan, `(0, 255, 255)`, by default. The beam's lighter shades follow the new hue, its white parts stay white, and its opacity is scaled by this color's. |
 | [InPlay](IIce/InPlay.md) { get; } | The beams charging or firing now, at most one per runner. |
+| [Fire](IIce/Fire.md)(…) | Fires the ice for the runner of a slot, as a use does, its sound included, without using an item: the beam charges, then fires from the runner's top edge to one side, moving with the runner, for that runner's values' times. A runner has one beam, so firing it again while it charges or fires starts it over. |
 
 ## See Also
 

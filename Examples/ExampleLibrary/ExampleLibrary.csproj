@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- A library writes its documentation, which the build copies next to its dll, so that the editors of the mods that use it show it. -->
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <!-- The game's folder, where ModRunners is installed. Change it if SpeedRunners is installed elsewhere. -->
+        <GameFolder>C:\Program Files (x86)\Steam\steamapps\common\SpeedRunners</GameFolder>
+    </PropertyGroup>
+
+    <!-- The Api ships with ModRunners, so a mod never carries its own copy. The documentation next to it shows in the editor. -->
+    <ItemGroup>
+        <Reference Include="ModRunners.Api">
+            <HintPath>$(GameFolder)\ModRunners\ModRunners.Api.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+
+    <!-- The mods this one needs, by Id, each also listed in manifest.json's Dependencies. Each is referenced from its folder in the game, without a copy of its dll: it loads from there, before this mod. -->
+    <ItemGroup>
+        <!-- <ModDependency Include="SomeLibrary" /> -->
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="@(ModDependency)" HintPath="$(GameFolder)\ModRunners\Mods\%(Identity)\%(Identity).dll" Private="false" />
+    </ItemGroup>
+
+    <!-- Building for .NET Framework 4.8 without Visual Studio, with the newer C# features. -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+        <PackageReference Include="PolySharp" Version="1.16.0" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- The files the mod's folder holds besides its dll. Add the mod's own, such as images, as ModFile items, with their paths from the project's folder: a file in a subfolder keeps its subfolder in the mod's folder, so Include="Sprites\Player.png" is copied to Sprites\Player.png, and Include="Sprites\**\*.png" takes every image of Sprites with its folders. -->
+    <ItemGroup>
+        <ModFile Include="manifest.json" />
+        <ModFile Include="icon.png" Condition="Exists('icon.png')" />
+    </ItemGroup>
+
+    <!-- Each build goes to ModRunners/Mods/<project name>/, ready for the game's next start: the dll and its documentation when the project makes one, as a library does for the mods that use it, then each ModFile at its own path. -->
+    <Target Name="CopyToGame" AfterTargets="Build">
+        <PropertyGroup>
+            <ModFolder>$(GameFolder)\ModRunners\Mods\$(MSBuildProjectName)</ModFolder>
+        </PropertyGroup>
+        <ItemGroup>
+            <ModBuildOutput Include="$(TargetPath)" />
+            <ModBuildOutput Include="$(TargetDir)$(TargetName).xml" Condition="'$(GenerateDocumentationFile)' == 'true'" />
+        </ItemGroup>
+        <Copy
+            SourceFiles="@(ModBuildOutput)"
+            DestinationFolder="$(ModFolder)"
+            SkipUnchangedFiles="true" />
+        <Copy
+            SourceFiles="@(ModFile)"
+            DestinationFiles="@(ModFile->'$(ModFolder)\%(RelativeDir)%(Filename)%(Extension)')"
+            SkipUnchangedFiles="true" />
+    </Target>
+
+</Project>

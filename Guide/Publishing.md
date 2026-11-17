@@ -18,6 +18,7 @@ The upload is your mod's folder in `ModRunners/Mods/`, exactly as it is: keep on
 - a virus scan, which refuses it if anything is found;
 - your manifest and icon, as ModRunners reads them;
 - your mod's id: the first upload of an id makes it yours, and only you can upload it again;
+- the mods your manifest needs: each must be on the Mod Browser, at the version you ask or newer ([Libraries](Libraries.md));
 - your dll: the same file as someone else's mod is refused as a copy;
 - what your code uses: a mod that uses the network, reads or writes files, runs programs, uses reflection or patches code is **held** for my review before anyone can download it. Otherwise it is published at once.
 

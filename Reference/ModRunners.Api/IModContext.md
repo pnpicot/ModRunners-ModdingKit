@@ -1,6 +1,6 @@
 # IModContext interface
 
-What ModRunners gives a mod: its identity, as its manifest declares it, its log, the game, drawing on the screen, its options, its messages and its items.
+What ModRunners gives a mod: its identity, as its manifest declares it, its log, the game, drawing on the screen, its options, its messages, its items, its tile types, and whether other mods are loaded.
 
 ```csharp
 public interface IModContext
@@ -18,7 +18,9 @@ public interface IModContext
 | [Messages](IModContext/Messages.md) { get; } | Messages between this mod and its copies on the other games of a modded lobby. |
 | [Name](IModContext/Name.md) { get; } | The mod's name, as players read it. |
 | [Options](IModContext/Options.md) { get; } | The mod's options, which the player edits in the game. |
+| [TileTypes](IModContext/TileTypes.md) { get; } | The kinds of tile the mod adds, which the tiles of a level can take ([`SetModTileType`](../ModRunners.Api.Levels/ILevel/SetModTileType.md)). |
 | [Version](IModContext/Version.md) { get; } |  |
+| [IsModLoaded](IModContext/IsModLoaded.md)(…) | Whether the mod with that Id is loaded. The mods listed in this mod's manifest's `Dependencies`, optional ones included, load before it, so the answer for them is final from its [`OnLoad`](./IMod/OnLoad.md) on. Other mods may load after it. |
 
 ## See Also
 

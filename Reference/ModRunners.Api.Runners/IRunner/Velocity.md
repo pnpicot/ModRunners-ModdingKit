@@ -1,10 +1,21 @@
 # IRunner.Velocity property
 
-How fast the runner moves along each axis, in level units per second. Y grows downward.
+How fast the runner moves along each axis, in level units per second. Y grows downward. A runner this game plays can be given a velocity, which its next frame of movement starts from, as from the velocity the game left: its run, jumps, air control and gravity change it from there. To push the runner, add to the velocity it has.
 
 ```csharp
-public Point Velocity { get; }
+public Point Velocity { get; set; }
 ```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentOutOfRangeException | Set to a point that is not finite. |
+| InvalidOperationException | Set while the runner's slot is not played from this game ([`IsLocal`](../../ModRunners.Api.Lobbies/ISlot/IsLocal.md)), or once the runner no longer exists. |
+
+## Remarks
+
+A locked swing keeps the velocity's speed along the rope's circle, and a wall hang, a super boost, a golden hook pull, a freeze and a tumble set their own. The velocity is not sent to the other games: they follow the runner's position, about 30 times per second.
 
 ## See Also
 

@@ -11,6 +11,7 @@ public interface IGoldenHook
 | name | description |
 | --- | --- |
 | [InPlay](IGoldenHook/InPlay.md) { get; } | The golden hooks out now, flying or locked onto a runner. Each runner has one. |
+| [Shoot](IGoldenHook/Shoot.md)(…) | Shoots the golden hook of the runner of a slot, as a use does, its sound included, without using an item: tied to its runner by the rope, it flies at that runner's speed, turning toward its target when it has one, and pulls the runner it locks onto. |
 
 ## See Also
 

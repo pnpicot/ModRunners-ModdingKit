@@ -1,6 +1,6 @@
 # IMatch.RoundStarted event
 
-Raised on the game's thread at each round's GO, as the runners start moving.
+Raised on the game's thread once at each round's GO, as the runners start moving. A Solo run has no rounds, so it is not raised there.
 
 ```csharp
 public event EventHandler<EventArgs>? RoundStarted;

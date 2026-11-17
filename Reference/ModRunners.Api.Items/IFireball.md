@@ -11,6 +11,7 @@ public interface IFireball
 | name | description |
 | --- | --- |
 | [InPlay](IFireball/InPlay.md) { get; } | The fireballs thrown and not exploded yet. |
+| [Throw](IFireball/Throw.md)(…) | Throws a fireball for the runner of a slot, as a use does, its sound included, without using an item: it flies, falls and rolls as the use's, with that runner's values. |
 
 ## See Also
 

@@ -1,6 +1,6 @@
 # IMatch.Started event
 
-Raised on the game's thread when a match's first countdown starts, once its level is built. It is not raised for a Solo run. Rules a mod sets here, such as the points to win, apply from the match's first round.
+Raised on the game's thread when a match's first countdown starts, once every player has loaded its level and its runners are placed, before that frame is drawn. The screen is Match from then on. It is not raised for a Solo run. Rules a mod sets here, such as the points to win, apply from the match's first round.
 
 ```csharp
 public event EventHandler<EventArgs>? Started;

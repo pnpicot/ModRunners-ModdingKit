@@ -1,6 +1,6 @@
 # TileType enumeration
 
-What a tile does to runners and hooks. Every tile is solid. The level editor offers 16 tiles, and several of them are drawings of one type, such as the plain, stepped and checkered slopes.
+What a tile does to runners and hooks. Every tile is solid. The level editor offers 16 tiles, and several of them are drawings of one type, such as the plain, stepped and checkered slopes ([`GetTileStyle`](../ModRunners.Api.Levels/ILevel/GetTileStyle.md)).
 
 ```csharp
 public enum TileType

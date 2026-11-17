@@ -24,8 +24,8 @@ public enum Screen
 | TrailTest | `11` | The trail editor's test level. |
 | CharacterSelection | `12` |  |
 | MapSelection | `13` |  |
-| MatchLoading | `14` | The level loads, and the game waits for every player to load it. |
-| Match | `15` | The level is loaded: countdowns, rounds, and the results once the match is over. |
+| MatchLoading | `14` | The level loads, and the game waits for every player to load it. A match stays on it until its first countdown ([`Started`](../ModRunners.Api.Matches/IMatch/Started.md)). |
+| Match | `15` | The match from its first countdown ([`Started`](../ModRunners.Api.Matches/IMatch/Started.md)): countdowns, rounds, and the results once the match is over. A Solo run is on it once its level is loaded. |
 
 ## See Also
 

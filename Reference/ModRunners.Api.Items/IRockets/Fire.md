@@ -1,6 +1,6 @@
 # IRockets.Fire method
 
-Fires a rocket for the runner of a slot, as a use does, without using an item: it follows that runner's values, and homes in like the use's rocket.
+Fires a rocket for the runner of a slot, as a use does, its sound included, without using an item: it follows that runner's values, and homes in like the use's rocket.
 
 ```csharp
 public IRocket Fire(ISlot owner, Point position, float angle)

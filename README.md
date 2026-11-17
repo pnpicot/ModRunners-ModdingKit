@@ -28,8 +28,9 @@ Start the game: on a clean install the main menu says "loaded (1 mod)", and `Mod
 5. [Options](Guide/Options.md): settings players change on the options page.
 6. [Items](Guide/Items.md): changing the game's items, and adding your own.
 7. [Multiplayer](Guide/Multiplayer.md): how online play works with mods, lobby options and messages between games.
-8. [Publishing](Guide/Publishing.md): uploading your mod, getting it validated for online play, and new versions.
-9. [Troubleshooting](Guide/Troubleshooting.md): logs, the console, and the usual mistakes.
+8. [Libraries](Guide/Libraries.md): using another mod's code, and making a library for other mods.
+9. [Publishing](Guide/Publishing.md): uploading your mod, getting it validated for online play, and new versions.
+10. [Troubleshooting](Guide/Troubleshooting.md): logs, the console, and the usual mistakes.
 
 ## The reference
 
@@ -48,6 +49,8 @@ Each one shows one part of the Api, in a single short file, and builds on its ow
 | [ExampleTiles](Examples/ExampleTiles) | Recoloring the levels: rules, exceptions, and restoring the game's look |
 | [ExampleItem](Examples/ExampleItem) | A new item in the item pickups |
 | [ExampleMoonJump](Examples/ExampleMoonJump) | One runner's own movement, and messages to the other games |
+| [ExampleLibrary](Examples/ExampleLibrary) | A library: a banner across the screen that other mods show |
+| [ExampleDependencies](Examples/ExampleDependencies) | Using ExampleLibrary when it is installed, as an optional dependency |
 
 ## License
 

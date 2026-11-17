@@ -25,6 +25,10 @@ The game writes its own errors in `%APPDATA%\SpeedRunnersLog.txt`.
 - the assembly has no public class implementing `IMod`, or several, or the class has no public constructor without arguments;
 - "built against ModRunners.Api ..., newer than this Framework's": your ModRunners is older than the Api you built against. Start the game once without `--no-update`, so that it updates.
 - "is disabled": `OnLoad` threw, and the error follows.
+- "uses the assembly of ... without listing ... in its manifest's Dependencies": your project references another mod, which your manifest must list ([Libraries](Libraries.md)).
+- "Its assembly is named ..., as the assembly of ...": two mods' dlls have the same name. Rename yours: the template names it after your project.
+
+**The Mods page says "needs a mod".** A mod your manifest lists in `Dependencies` is not installed, turned off, older than the version you ask, or failed to load. The line under its details says which ([Libraries](Libraries.md)).
 
 **Something stops working during the game.** An event handler threw: `Runtime.log` has the error, and that handler was removed. Your other handlers keep working.
 

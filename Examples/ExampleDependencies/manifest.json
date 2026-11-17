@@ -1,0 +1,12 @@
+{
+    "Id": "ExampleDependencies",
+    "Name": "Example: Dependencies",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "Announces each round of a match with the banner of Example: Library when it is installed, and in the log otherwise.",
+    "Assembly": "ExampleDependencies.dll",
+    "Capabilities": ["Observe", "Present"],
+    "Dependencies": [
+        { "Id": "ExampleLibrary", "Version": "1.0.0", "Optional": true }
+    ]
+}

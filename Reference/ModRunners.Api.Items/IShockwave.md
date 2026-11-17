@@ -11,7 +11,8 @@ public interface IShockwave
 | name | description |
 | --- | --- |
 | [InPlay](IShockwave/InPlay.md) { get; } | The shockwaves out now, from their release until their drawing played out. Each runner has one. |
-| event [Released](IShockwave/Released.md) | Raised on the game's thread when a runner releases its shockwave, on that runner's game and on every game that learns of the use. |
+| event [Released](IShockwave/Released.md) | Raised on the game's thread when a runner releases its shockwave, on that runner's game and on every game that learns of the use. Shockwaves released with [`Release`](./IShockwave/Release.md) do not raise it. |
+| [Release](IShockwave/Release.md)(…) | Releases the shockwave of the runner of a slot, as a use does, its sound included, without using an item: the wave travels from the runner's middle to the target, then blasts there, with that runner's values. A runner has one shockwave, so one already out ends. |
 
 ## See Also
 

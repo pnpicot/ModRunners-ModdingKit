@@ -1,6 +1,6 @@
 # IShockwave.Released event
 
-Raised on the game's thread when a runner releases its shockwave, on that runner's game and on every game that learns of the use.
+Raised on the game's thread when a runner releases its shockwave, on that runner's game and on every game that learns of the use. Shockwaves released with [`Release`](./Release.md) do not raise it.
 
 ```csharp
 public event EventHandler<ShockwaveReleasedEventArgs>? Released;

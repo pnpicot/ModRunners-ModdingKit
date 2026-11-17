@@ -18,23 +18,43 @@
         </Reference>
     </ItemGroup>
 
+    <!-- The mods this one needs, by Id, each also listed in manifest.json's Dependencies. Each is referenced from its folder in the game, without a copy of its dll: it loads from there, before this mod. -->
+    <ItemGroup>
+        <!-- <ModDependency Include="SomeLibrary" /> -->
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="@(ModDependency)" HintPath="$(GameFolder)\ModRunners\Mods\%(Identity)\%(Identity).dll" Private="false" />
+    </ItemGroup>
+
     <!-- Building for .NET Framework 4.8 without Visual Studio, with the newer C# features. -->
     <ItemGroup>
         <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
         <PackageReference Include="PolySharp" Version="1.16.0" PrivateAssets="all" />
     </ItemGroup>
 
-    <!-- The files the mod's folder holds besides its dll. Add the mod's own, such as images, as ModFile items. -->
+    <!-- The files the mod's folder holds besides its dll. Add the mod's own, such as images, as ModFile items, with their paths from the project's folder: a file in a subfolder keeps its subfolder in the mod's folder, so Include="Sprites\Player.png" is copied to Sprites\Player.png, and Include="Sprites\**\*.png" takes every image of Sprites with its folders. -->
     <ItemGroup>
         <ModFile Include="manifest.json" />
         <ModFile Include="icon.png" Condition="Exists('icon.png')" />
     </ItemGroup>
 
-    <!-- Each build goes to ModRunners/Mods/<project name>/, ready for the game's next start. -->
+    <!-- Each build goes to ModRunners/Mods/<project name>/, ready for the game's next start: the dll and its documentation when the project makes one, as a library does for the mods that use it, then each ModFile at its own path. -->
     <Target Name="CopyToGame" AfterTargets="Build">
+        <PropertyGroup>
+            <ModFolder>$(GameFolder)\ModRunners\Mods\$(MSBuildProjectName)</ModFolder>
+        </PropertyGroup>
+        <ItemGroup>
+            <ModBuildOutput Include="$(TargetPath)" />
+            <ModBuildOutput Include="$(TargetDir)$(TargetName).xml" Condition="'$(GenerateDocumentationFile)' == 'true'" />
+        </ItemGroup>
         <Copy
-            SourceFiles="$(TargetPath);@(ModFile)"
-            DestinationFolder="$(GameFolder)\ModRunners\Mods\$(MSBuildProjectName)"
+            SourceFiles="@(ModBuildOutput)"
+            DestinationFolder="$(ModFolder)"
+            SkipUnchangedFiles="true" />
+        <Copy
+            SourceFiles="@(ModFile)"
+            DestinationFiles="@(ModFile->'$(ModFolder)\%(RelativeDir)%(Filename)%(Extension)')"
             SkipUnchangedFiles="true" />
     </Target>
 

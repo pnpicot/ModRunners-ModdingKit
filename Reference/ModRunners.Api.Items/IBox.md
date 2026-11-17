@@ -11,6 +11,7 @@ public interface IBox
 | name | description |
 | --- | --- |
 | [InPlay](IBox/InPlay.md) { get; } | The boxes standing in the level now, broken ones excepted. |
+| [Drop](IBox/Drop.md)(…) | Drops a box for the runner of a slot, as a use does, its sound included, without using an item: it falls until it lands, with that runner's values, and stands until something breaks it. |
 
 ## See Also
 

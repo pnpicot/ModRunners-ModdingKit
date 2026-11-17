@@ -40,7 +40,7 @@ MyMod/
 dotnet build
 ```
 
-Each build copies your mod into `<game>/ModRunners/Mods/MyMod/`: the dll, `manifest.json`, `icon.png` if you add one, and the files you list as `ModFile` in the project. Start the game from Steam: ModRunners loads every mod of that folder at startup.
+Each build copies your mod into `<game>/ModRunners/Mods/MyMod/`: the dll, `manifest.json`, `icon.png` if you add one, and the files you list as `ModFile` in the project, each in the same subfolder as in your project. Start the game from Steam: ModRunners loads every mod of that folder at startup.
 
 **Close the game before building.** The game keeps your dll open while it runs, so the build cannot replace it, and mods only load when the game starts anyway.
 

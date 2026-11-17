@@ -1,0 +1,9 @@
+{
+    "Id": "ExampleLibrary",
+    "Name": "Example: Library",
+    "Version": "1.0.0",
+    "Author": "ModRunners",
+    "Description": "A library for other mods. On its own it does nothing: the mods that use it show a banner across the screen with it.",
+    "Assembly": "ExampleLibrary.dll",
+    "Capabilities": ["Present"]
+}

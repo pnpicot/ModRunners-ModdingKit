@@ -23,6 +23,7 @@ Every mod folder has a `manifest.json` next to its dll. ModRunners reads it befo
 | `Description` | Optional, and worth writing: what the mod does, and what it changes. |
 | `Assembly` | The dll's file name. |
 | `Capabilities` | What the mod does, from the list below. |
+| `Dependencies` | Optional. The mods yours needs or can use, each with the lowest version it works with: see [Libraries](Libraries.md). |
 
 A broken manifest is reported in `Runtime.log` with the faulty field, and the mod is skipped.
 

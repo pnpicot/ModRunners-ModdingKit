@@ -14,10 +14,13 @@ public interface IOptions
 | [Choice&lt;T&gt;](IOptions/Choice.md)(…) | One of the values of an enum. The options page shows each value's name with spaces between its words. |
 | [Color](IOptions/Color.md)(…) | An opaque color. |
 | [Group](IOptions/Group.md)(…) | Options the options page shows together, under a tab of their own named *label*. Once the mod has options in two tabs, the options declared outside any group are under a tab named General. The tabs are in the order of their first option. |
+| [Heading](IOptions/Heading.md)(…) | An uneditable text on the options page, such as a title over the options declared after it. It holds no value. |
 | [Key](IOptions/Key.md)(…) | A key of the keyboard. None is no key. |
 | [List](IOptions/List.md)(…) | A list: the player adds and removes its items, up to *maxItems*. Its fields and its default items are declared on it next, in [`OnLoad`](../ModRunners.Api/IMod/OnLoad.md). |
 | [Number](IOptions/Number.md)(…) | A number from *min* to *max*, in steps of *step* from *min*. A value between two steps is rounded to the nearest. |
 | [OnOff](IOptions/OnOff.md)(…) | An option that is on or off. |
+| [Separator](IOptions/Separator.md)() | A thin line across the options page, between the options declared before it and after it. |
+| [Space](IOptions/Space.md)() | An empty line on the options page, the height of an option. |
 | [Text](IOptions/Text.md)(…) | A line of text, of at most *maxLength* characters. |
 
 ## Remarks

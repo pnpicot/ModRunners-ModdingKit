@@ -1,6 +1,6 @@
 # IMod.OnLoad method
 
-Called once, when ModRunners loads the mod, before the game starts. A mod that throws here is disabled.
+Called once, when ModRunners loads the mod, before the game starts and after the mods listed in its manifest's `Dependencies`. A mod that throws here is disabled.
 
 ```csharp
 public void OnLoad(IModContext context)

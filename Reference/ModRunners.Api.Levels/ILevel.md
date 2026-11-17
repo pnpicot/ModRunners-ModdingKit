@@ -11,10 +11,14 @@ public interface ILevel
 | name | description |
 | --- | --- |
 | [Height](ILevel/Height.md) { get; } | The height of the map, in tiles. |
+| [Objects](ILevel/Objects.md) { get; } | The objects placed on the map besides its tiles, in the order of the map's file. Story levels have none. They stay readable once the level is closed. |
 | [Stage](ILevel/Stage.md) { get; } | The map's stage, or null when the map names none. |
 | [TileSize](ILevel/TileSize.md) { get; } | The side of a tile, in level units. |
 | [Width](ILevel/Width.md) { get; } | The width of the map, in tiles. |
+| [GetModTileType](ILevel/GetModTileType.md)(…) | The mod tile type the tile at a place of the map has ([`SetModTileType`](./ILevel/SetModTileType.md)), or null when it has none and is drawn as its [`TileType`](../ModRunners.Api.Tiles/TileType.md). |
 | [GetTile](ILevel/GetTile.md)(…) | The tile at a place of the map, as it is now: the destructible environment modifier carves tiles away during a match. |
+| [GetTileStyle](ILevel/GetTileStyle.md)(…) | How the tile at a place of the map is drawn among the tiles of its type ([`GetTile`](./ILevel/GetTile.md)), such as a checkered slope, which players call a see-through slope. |
+| [SetModTileType](ILevel/SetModTileType.md)(…) | Gives the tile at a place of the map a mod's tile type, which it is drawn with from the next frame, or takes it away with null. The tile keeps its [`TileType`](../ModRunners.Api.Tiles/TileType.md): its form, its collision and what it does to runners and hooks. |
 
 ## Remarks
 

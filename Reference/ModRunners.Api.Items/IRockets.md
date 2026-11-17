@@ -12,7 +12,7 @@ public interface IRockets
 | --- | --- |
 | [InPlay](IRockets/InPlay.md) { get; } | The rockets flying now, the map's launchers' excepted. |
 | event [Fired](IRockets/Fired.md) | Raised on the game's thread when a use of the rockets fires its rocket, on the game of the runner who used it and on every game that learns of the use. Rockets fired with [`Fire`](./IRockets/Fire.md) do not raise it. |
-| [Fire](IRockets/Fire.md)(…) | Fires a rocket for the runner of a slot, as a use does, without using an item: it follows that runner's values, and homes in like the use's rocket. |
+| [Fire](IRockets/Fire.md)(…) | Fires a rocket for the runner of a slot, as a use does, its sound included, without using an item: it follows that runner's values, and homes in like the use's rocket. |
 
 ## See Also
 

@@ -11,6 +11,7 @@ public interface IBomb
 | name | description |
 | --- | --- |
 | [InPlay](IBomb/InPlay.md) { get; } | The bombs placed in the level now, at most one per runner. |
+| [Place](IBomb/Place.md)(…) | Places the bomb of the runner of a slot, as a use does, its sound included, without using an item: it falls until it lands, with that runner's values, and stays until something sets it off ([`Explode`](./IPlacedBomb/Explode.md)). A runner has one bomb, so a bomb already placed moves there. |
 
 ## See Also
 

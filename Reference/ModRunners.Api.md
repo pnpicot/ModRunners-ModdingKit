@@ -6,7 +6,7 @@
 | --- | --- |
 | interface [IGame](./ModRunners.Api/IGame.md) | The running game. |
 | interface [IMod](./ModRunners.Api/IMod.md) | The entry point of a mod. A mod's assembly has exactly one public class implementing it, with a public constructor that takes no argument. |
-| interface [IModContext](./ModRunners.Api/IModContext.md) | What ModRunners gives a mod: its identity, as its manifest declares it, its log, the game, drawing on the screen, its options, its messages and its items. |
+| interface [IModContext](./ModRunners.Api/IModContext.md) | What ModRunners gives a mod: its identity, as its manifest declares it, its log, the game, drawing on the screen, its options, its messages, its items, its tile types, and whether other mods are loaded. |
 | interface [IModLog](./ModRunners.Api/IModLog.md) | A mod's log. Its lines go to `ModRunners/Logs/Runtime.log`, prefixed with the mod's id. |
 | struct [Point](./ModRunners.Api/Point.md) | A position, in the units of the space it belongs to. |
 | struct [Rectangle](./ModRunners.Api/Rectangle.md) | An axis-aligned rectangle, in the units of the space it belongs to. |
@@ -81,6 +81,7 @@
 | public type | description |
 | --- | --- |
 | interface [ILevel](./ModRunners.Api.Levels/ILevel.md) | The map being played, from when it is built at the start of a match to the end of the match. Every round of the match plays on it. |
+| interface [ILevelObject](./ModRunners.Api.Levels/ILevelObject.md) | An object a mapper placed on the map in the level editor, besides its tiles: a deco, a text, a gate, a lever, a trigger zone, a checkpoint, spikes and the rest, as the map's file holds it. It is the same on every game, whatever the player's Quality option, which only leaves some decos undrawn. |
 | class [LevelChangedEventArgs](./ModRunners.Api.Levels/LevelChangedEventArgs.md) | The level that was closed, and the one that was built. |
 | enum [Stage](./ModRunners.Api.Levels/Stage.md) | The stage a map is set in, named by the map's file. It picks the map's backdrop, the image that fills the screen behind it, and its scenery. |
 
@@ -161,12 +162,15 @@
 | interface [IJumpRules](./ModRunners.Api.Runners/IJumpRules.md) | The jump, the air jump, the wall jump and the ledge hop. A runner has two jumps between landings, and walking off a ledge uses the first. |
 | interface [IMovementRules](./ModRunners.Api.Runners/IMovementRules.md) | The values a runner moves by, grouped as players know its movement. Speeds are in level units per second, and accelerations and slowdowns in level units per second, per second. |
 | interface [IRunner](./ModRunners.Api.Runners/IRunner.md) | The character a slot's player, bot or replay controls in a match. A runner is created at the match's first countdown and kept for every round, until its player leaves or the match closes. Read it from [`Runner`](./ModRunners.Api.Lobbies/ISlot/Runner.md) when needed: once its player left, a runner kept from before keeps its last values. |
+| interface [IRunnerPopup](./ModRunners.Api.Runners/IRunnerPopup.md) | A text shown above a runner with [`ShowPopup`](./ModRunners.Api.Runners/IRunner/ShowPopup.md). |
 | interface [IRunningRules](./ModRunners.Api.Runners/IRunningRules.md) | How a runner speeds up and slows down on the ground. A runner holding a direction accelerates by the band its speed is in: [`SlowRunAcceleration`](./ModRunners.Api.Runners/IRunningRules/SlowRunAcceleration.md) up to [`SlowRunSpeed`](./ModRunners.Api.Runners/IRunningRules/SlowRunSpeed.md), [`RunAcceleration`](./ModRunners.Api.Runners/IRunningRules/RunAcceleration.md) up to [`RunSpeed`](./ModRunners.Api.Runners/IRunningRules/RunSpeed.md), and above it, it slows down by [`OverspeedDeceleration`](./ModRunners.Api.Runners/IRunningRules/OverspeedDeceleration.md), so it settles at [`RunSpeed`](./ModRunners.Api.Runners/IRunningRules/RunSpeed.md). Boosting moves where it settles up to [`HighSpeed`](./ModRunners.Api.Runners/IRunningRules/HighSpeed.md) ([`IBoostRules`](./ModRunners.Api.Runners/IBoostRules.md)). |
 | interface [ISlideRules](./ModRunners.Api.Runners/ISlideRules.md) | The slide, which lasts while its button is held and the runner moves, slowing it down. |
 | interface [ISwingRules](./ModRunners.Api.Runners/ISwingRules.md) | The swing on the grapple's rope, which ignores gravity and the directions held, and lets go by itself near the top of its arc. |
 | struct [RopeColors](./ModRunners.Api.Runners/RopeColors.md) | The two lines a grapple's rope is drawn with. |
 | class [RunnerActedEventArgs](./ModRunners.Api.Runners/RunnerActedEventArgs.md) | Something a runner did, or that happened to it, as it moved. |
 | enum [RunnerAction](./ModRunners.Api.Runners/RunnerAction.md) | Something a runner does, or that happens to it, as it moves. |
+| [Flags] enum [RunnerControls](./ModRunners.Api.Runners/RunnerControls.md) | The controls a runner is played with: the keys or buttons its player presses, or a bot's choices in their place. Several are held at once. |
+| struct [RunnerOutline](./ModRunners.Api.Runners/RunnerOutline.md) | A line drawn around a runner's character, behind it, following the shape of its current animation frame, not its hitbox. The game draws none. |
 
 ## ModRunners.Api.Screens namespace
 
@@ -203,9 +207,12 @@
 
 | public type | description |
 | --- | --- |
+| interface [IModTileType](./ModRunners.Api.Tiles/IModTileType.md) | A kind of tile a mod adds ([`Define`](./ModRunners.Api.Tiles/IModTileTypes/Define.md)): a look that a tile of the level can take in place of its own ([`SetModTileType`](./ModRunners.Api.Levels/ILevel/SetModTileType.md)). The tile keeps its [`TileType`](./ModRunners.Api.Tiles/TileType.md), so its form and what it does to runners and hooks. Anything more its tiles do, such as how runners move on them, is the mod's to write. |
+| interface [IModTileTypes](./ModRunners.Api.Tiles/IModTileTypes.md) | The kinds of tile this mod adds. A tile takes one on this game only: nothing is sent, and each game draws the tiles as its mods set them. |
 | interface [ITiles](./ModRunners.Api.Tiles/ITiles.md) | How tiles look, on every map: their palette, the thickness of their borders and their outline. Each is a rule for every tile type, and a type can have its own as an exception. A change shows from the next frame, on the map being played too. |
 | struct [TileOutline](./ModRunners.Api.Tiles/TileOutline.md) | A line drawn inside a tile along its edges that touch air: an empty tile, the transparent part of a tile's drawing, such as the empty half of a slope, or the outside of the map. It runs around each cluster of tiles without a break, along faces, slopes and corners. The game's tiles have none. |
 | struct [TilePalette](./ModRunners.Api.Tiles/TilePalette.md) | The two colors a tile is drawn with. The game's tiles are black, their main color, with white marks, their secondary color, on the faces that do something: a grapple ceiling's bottom edge, a wall jump face. |
-| enum [TileType](./ModRunners.Api.Tiles/TileType.md) | What a tile does to runners and hooks. Every tile is solid. The level editor offers 16 tiles, and several of them are drawings of one type, such as the plain, stepped and checkered slopes. |
+| enum [TileStyle](./ModRunners.Api.Tiles/TileStyle.md) | How a tile is drawn among the level editor's tiles of its [`TileType`](./ModRunners.Api.Tiles/TileType.md). A tile's style changes nothing of what it does. |
+| enum [TileType](./ModRunners.Api.Tiles/TileType.md) | What a tile does to runners and hooks. Every tile is solid. The level editor offers 16 tiles, and several of them are drawings of one type, such as the plain, stepped and checkered slopes ([`GetTileStyle`](./ModRunners.Api.Levels/ILevel/GetTileStyle.md)). |
 
 <!-- DO NOT EDIT: generated by xmldocmd for ModRunners.Api.dll -->

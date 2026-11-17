@@ -38,7 +38,7 @@ context.Drawing.Draw += (_, e) =>
     e.Canvas.DrawImage(logo, new Rectangle(20, 20, logo.Width, logo.Height), Layer.Overlay);
 ```
 
-- `LoadImage` reads a PNG from your mod's folder, once, in `OnLoad`. List the file as a `ModFile` in your project so that builds copy it.
+- `LoadImage` reads a PNG from your mod's folder, once, in `OnLoad`. List the file as a `ModFile` in your project so that builds copy it. A file in a subfolder keeps it: `<ModFile Include="Sprites\Player.png" />` is copied to `Sprites\Player.png` in your mod's folder, which `LoadImage("Sprites/Player.png")` reads.
 - `context.Drawing.GameImage(...)` gives some of the game's own images, such as its notification box and popup buttons, to draw in the game's style.
 - `image.Recolored(color)` is the same image turned to a color's hue, keeping its shading.
 - `DrawImage` stretches the image to the rectangle you give, and takes an opacity from 0 to 1.
