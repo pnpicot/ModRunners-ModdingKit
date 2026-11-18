@@ -20,8 +20,10 @@ public interface IGame
 | [Mouse](IGame/Mouse.md) { get; } | The mouse, as the game's menus read it. |
 | [Movement](IGame/Movement.md) { get; } | The values every runner moves by, unless it has its own ([`Movement`](../ModRunners.Api.Runners/IRunner/Movement.md)). |
 | [OpenLobbies](IGame/OpenLobbies.md) { get; } | The lobbies other players host, which this game's player could join. |
+| [Ranking](IGame/Ranking.md) { get; } | The player's rank in the ranked matches. |
 | [Screen](IGame/Screen.md) { get; } | The screen the player is on. |
 | [Settings](IGame/Settings.md) { get; } | The game's settings: the options menu's and the launch options'. |
+| [Sounds](IGame/Sounds.md) { get; } | The sounds the game plays, and how each one sounds. |
 | [Tiles](IGame/Tiles.md) { get; } | How tiles look, on every map. |
 | event [LevelChanged](IGame/LevelChanged.md) | Raised on the game's thread when a level is built, and when it is closed at the end of a match. It is raised before the level's first frame is drawn. |
 | event [RunnerActed](IGame/RunnerActed.md) | Raised on the game's thread when a runner acts as it moves, such as a jump, a landing or a stumble. Every game raises it for every runner it simulates, and the runner's own game decides ([`IsDecidedHere`](../ModRunners.Api.Runners/RunnerActedEventArgs/IsDecidedHere.md)). |

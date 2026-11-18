@@ -10,12 +10,12 @@ public interface ICanvas
 
 | name | description |
 | --- | --- |
-| [DrawImage](ICanvas/DrawImage.md)(…) | Draws an image stretched to fill *destination*. (2 methods) |
+| [DrawImage](ICanvas/DrawImage.md)(…) | Draws an image stretched to fill *destination*. (3 methods) |
 | [DrawLine](ICanvas/DrawLine.md)(…) | Draws a straight line, centered on the segment from *start* to *end*. |
 | [DrawRectangle](ICanvas/DrawRectangle.md)(…) | Draws the outline of a rectangle, inside its edges. |
 | [DrawText](ICanvas/DrawText.md)(…) | Draws one or more lines of text, separated by `\n`. |
 | [FillCircle](ICanvas/FillCircle.md)(…) |  |
-| [FillRectangle](ICanvas/FillRectangle.md)(…) |  |
+| [FillRectangle](ICanvas/FillRectangle.md)(…) |  (2 methods) |
 | [MeasureText](ICanvas/MeasureText.md)(…) | The area [`DrawText`](./ICanvas/DrawText.md) covers with the same text, position and font, in the units of the layer the text is drawn on. |
 | [VisibleArea](ICanvas/VisibleArea.md)(…) | The part of *layer* the player sees this frame, in its units: the camera's view for a layer in the level, the game's area for Overlay. |
 

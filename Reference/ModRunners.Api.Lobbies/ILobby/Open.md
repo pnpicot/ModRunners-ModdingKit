@@ -1,6 +1,6 @@
 # ILobby.Open method
 
-Opens a lobby in a game mode, as the game's menu entries do. The character selection shows once the lobby has loaded. Leaving the lobby comes back to the main menu's first page.
+Opens a lobby in a game mode, as the game's menu entries do. The character selection shows once the lobby has loaded. Leaving the lobby comes back to the page it was opened from.
 
 ```csharp
 public void Open(GameMode mode)
@@ -15,7 +15,7 @@ public void Open(GameMode mode)
 | exception | condition |
 | --- | --- |
 | ArgumentOutOfRangeException | *mode* is not one of those. |
-| InvalidOperationException | The player is not on the main menu's first page. |
+| InvalidOperationException | The player is not on the main menu's first page, Multiplayer page or Practice page, or the menu is still moving to it. |
 
 ## See Also
 

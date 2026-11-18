@@ -22,6 +22,7 @@
 | interface [ICanvas](./ModRunners.Api.Drawing/ICanvas.md) | What a mod draws in the current frame. Each drawing goes to a [`Layer`](./ModRunners.Api.Drawing/Layer.md), in that layer's units, and only lasts this frame. A drawing on a layer the game does not show this frame is dropped. Within a layer, later drawings cover earlier ones. |
 | interface [IDrawing](./ModRunners.Api.Drawing/IDrawing.md) | What a mod draws on the screen. |
 | interface [IImage](./ModRunners.Api.Drawing/IImage.md) | An image a mod loaded from its folder with [`LoadImage`](./ModRunners.Api.Drawing/IDrawing/LoadImage.md), an image of the game's menus ([`GameImage`](./ModRunners.Api.Drawing/IDrawing/GameImage.md)), or one of those recolored. |
+| interface [IShader](./ModRunners.Api.Drawing/IShader.md) | A pixel shader from the mod's folder, which colors each pixel of the drawings made with it. It is an effect compiled with `fxc /T fx_2_0`, whose technique's passes have a pixel shader and no vertex shader. |
 | enum [Layer](./ModRunners.Api.Drawing/Layer.md) | Where a drawing goes among what the game draws, from back to front. The layers in the level are in level units, which scroll and zoom with the camera. |
 
 ## ModRunners.Api.Input namespace
@@ -121,9 +122,12 @@
 
 | public type | description |
 | --- | --- |
-| interface [IMainMenu](./ModRunners.Api.Menus/IMainMenu.md) | The main menu's first page: the buttons on the bottom left of the screen. |
+| interface [IMainMenu](./ModRunners.Api.Menus/IMainMenu.md) | The main menu: the buttons on the bottom left of its first page, and the buttons of its Multiplayer and Practice pages. |
 | interface [IMenuButton](./ModRunners.Api.Menus/IMenuButton.md) | A button a mod added to a menu. The game highlights it and lets the player reach it like its own buttons. |
+| interface [IMenuPage&lt;TButton&gt;](./ModRunners.Api.Menus/IMenuPage-1.md) | A page of the main menu with the game's entries in a column, such as the Multiplayer page. Buttons a mod adds go into that column. |
 | enum [MainMenuButton](./ModRunners.Api.Menus/MainMenuButton.md) | The game's buttons on the main menu, from top to bottom. The first three are bigger and spaced wider than the others. |
+| enum [MultiplayerMenuButton](./ModRunners.Api.Menus/MultiplayerMenuButton.md) | The game's buttons on the Multiplayer page, from top to bottom. |
+| enum [PracticeMenuButton](./ModRunners.Api.Menus/PracticeMenuButton.md) | The game's buttons on the Practice page, from top to bottom. |
 
 ## ModRunners.Api.Messaging namespace
 
@@ -148,6 +152,7 @@
 
 | public type | description |
 | --- | --- |
+| interface [IRanking](./ModRunners.Api.Ranks/IRanking.md) | This game's player in the ranked matches of the current season. |
 | enum [League](./ModRunners.Api.Ranks/League.md) | The leagues of the ranked seasons, from the lowest. |
 | struct [Rank](./ModRunners.Api.Ranks/Rank.md) | A rank of the current season: its league and its points. |
 
@@ -202,6 +207,19 @@
 | enum [SearchDistanceMode](./ModRunners.Api.Settings/SearchDistanceMode.md) | How matchmaking uses the [`SearchDistance`](./ModRunners.Api.Settings/SearchDistance.md), as the Game page shows it next to the distance. |
 | class [SettingChangedEventArgs&lt;T&gt;](./ModRunners.Api.Settings/SettingChangedEventArgs-1.md) | A setting's value in effect, before and after a change. |
 | enum [WindowMode](./ModRunners.Api.Settings/WindowMode.md) | How the game's window covers the screen, as the Graphics page's "Window Mode" sets it. |
+
+## ModRunners.Api.Sounds namespace
+
+| public type | description |
+| --- | --- |
+| enum [GameSound](./ModRunners.Api.Sounds/GameSound.md) | A sound the game plays. Each runner has its own copy of every sound. |
+| interface [ISoundEffects](./ModRunners.Api.Sounds/ISoundEffects.md) | How a sound sounds: its volume, its pitch, its filters and its effects. Every value's default leaves the game's sound as it is. |
+| interface [ISoundRules](./ModRunners.Api.Sounds/ISoundRules.md) | How each sound sounds: the rule for every runner ([`Rules`](./ModRunners.Api.Sounds/ISounds/Rules.md)), or one runner's own values ([`Sounds`](./ModRunners.Api.Runners/IRunner/Sounds.md)). |
+| interface [ISounds](./ModRunners.Api.Sounds/ISounds.md) | The sounds the game plays, and how each one sounds. |
+| struct [SoundEcho](./ModRunners.Api.Sounds/SoundEcho.md) | The sound repeated, each repeat quieter than the one before. The repeats keep the volume and the pan the sound started with, and stop once they would be quieter than a hundredth of it. |
+| struct [SoundPitchRange](./ModRunners.Api.Sounds/SoundPitchRange.md) | The range the game draws the pitch of each play of a sound in, so that a sound repeated never sounds quite the same. |
+| class [SoundPlayedEventArgs](./ModRunners.Api.Sounds/SoundPlayedEventArgs.md) | A sound this game started playing. |
+| struct [SoundReverb](./ModRunners.Api.Sounds/SoundReverb.md) | The sound echoing off the walls of a space. A preset can be changed where it differs, as in `SoundReverb.Hall with { Mix = 0.5f }`. |
 
 ## ModRunners.Api.Tiles namespace
 

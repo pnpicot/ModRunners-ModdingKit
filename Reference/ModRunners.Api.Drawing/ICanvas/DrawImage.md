@@ -1,4 +1,4 @@
-# ICanvas.DrawImage method (1 of 2)
+# ICanvas.DrawImage method (1 of 3)
 
 Draws an image stretched to fill *destination*.
 
@@ -16,7 +16,7 @@ public void DrawImage(IImage image, Rectangle destination, Layer layer)
 
 ---
 
-# ICanvas.DrawImage method (2 of 2)
+# ICanvas.DrawImage method (2 of 3)
 
 Draws an image stretched to fill *destination*, partly transparent.
 
@@ -35,6 +35,31 @@ public void DrawImage(IImage image, Rectangle destination, float opacity, Layer 
 
 * interface [IImage](../IImage.md)
 * struct [Rectangle](../../ModRunners.Api/Rectangle.md)
+* enum [Layer](../Layer.md)
+* interface [ICanvas](../ICanvas.md)
+* namespace [ModRunners.Api.Drawing](../../ModRunners.Api.md)
+
+---
+
+# ICanvas.DrawImage method (3 of 3)
+
+Draws an image stretched to fill *destination*, each pixel colored by *shader*, which gets the image as its texture.
+
+```csharp
+public void DrawImage(IImage image, Rectangle destination, IShader shader, Layer layer)
+```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentException | The shader cannot be built, or has no parameter of a name set, or not of its value's kind. |
+
+## See Also
+
+* interface [IImage](../IImage.md)
+* struct [Rectangle](../../ModRunners.Api/Rectangle.md)
+* interface [IShader](../IShader.md)
 * enum [Layer](../Layer.md)
 * interface [ICanvas](../ICanvas.md)
 * namespace [ModRunners.Api.Drawing](../../ModRunners.Api.md)

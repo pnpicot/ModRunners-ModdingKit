@@ -15,6 +15,10 @@ public enum GameImage
 | PopupButtonRight | `2` | The right button of the game's popups (confirm), not highlighted, 140 × 70. |
 | PopupButtonLeftHighlighted | `3` | PopupButtonLeft, highlighted. |
 | PopupButtonRightHighlighted | `4` | PopupButtonRight, highlighted. |
+| ArrowLeft | `5` | The game's triangle arrow pointing left, which pages through its lists, 50 × 60. |
+| ArrowRight | `6` | The game's triangle arrow pointing right, 50 × 60. |
+| ArrowLeftHighlighted | `7` | ArrowLeft, highlighted with an outline. |
+| ArrowRightHighlighted | `8` | ArrowRight, highlighted with an outline. |
 
 ## See Also
 

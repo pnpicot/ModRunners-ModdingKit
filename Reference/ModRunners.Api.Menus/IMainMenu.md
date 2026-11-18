@@ -1,6 +1,6 @@
 # IMainMenu interface
 
-The main menu's first page: the buttons on the bottom left of the screen.
+The main menu: the buttons on the bottom left of its first page, and the buttons of its Multiplayer and Practice pages.
 
 ```csharp
 public interface IMainMenu
@@ -10,6 +10,8 @@ public interface IMainMenu
 
 | name | description |
 | --- | --- |
+| [Multiplayer](IMainMenu/Multiplayer.md) { get; } | The Multiplayer page's buttons. |
+| [Practice](IMainMenu/Practice.md) { get; } | The Practice page's buttons. |
 | [AddButton](IMainMenu/AddButton.md)(…) | Adds a button under one of the game's, in the style of that button's group. The buttons above it move up to make room, so the bottom button stays in place. Buttons added under the same game button are placed in the order they were added. |
 
 ## See Also

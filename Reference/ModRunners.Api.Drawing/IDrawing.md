@@ -13,6 +13,7 @@ public interface IDrawing
 | event [Draw](IDrawing/Draw.md) | Raised on the game's thread once per frame, before the game draws it. Nothing drawn lasts longer than the frame, so a drawing that should stay is drawn again at each frame. |
 | [GameImage](IDrawing/GameImage.md)(…) | An image of the game's menus. |
 | [LoadImage](IDrawing/LoadImage.md)(…) | Loads a PNG image from the mod's folder. The file is read at once, and turned into a texture the first time the image is drawn. |
+| [LoadShader](IDrawing/LoadShader.md)(…) | Loads a compiled shader from the mod's folder. The file is read at once, and turned into a shader the first time something is drawn with it. |
 
 ## See Also
 

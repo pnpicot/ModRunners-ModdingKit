@@ -1,4 +1,4 @@
-# ICanvas.FillRectangle method
+# ICanvas.FillRectangle method (1 of 2)
 
 ```csharp
 public void FillRectangle(Rectangle rectangle, Color color, Layer layer)
@@ -8,6 +8,30 @@ public void FillRectangle(Rectangle rectangle, Color color, Layer layer)
 
 * struct [Rectangle](../../ModRunners.Api/Rectangle.md)
 * struct [Color](../Color.md)
+* enum [Layer](../Layer.md)
+* interface [ICanvas](../ICanvas.md)
+* namespace [ModRunners.Api.Drawing](../../ModRunners.Api.md)
+
+---
+
+# ICanvas.FillRectangle method (2 of 2)
+
+Fills a rectangle, each pixel colored by *shader*, whose texture is white.
+
+```csharp
+public void FillRectangle(Rectangle rectangle, IShader shader, Layer layer)
+```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentException | The shader cannot be built, or has no parameter of a name set, or not of its value's kind. |
+
+## See Also
+
+* struct [Rectangle](../../ModRunners.Api/Rectangle.md)
+* interface [IShader](../IShader.md)
 * enum [Layer](../Layer.md)
 * interface [ICanvas](../ICanvas.md)
 * namespace [ModRunners.Api.Drawing](../../ModRunners.Api.md)

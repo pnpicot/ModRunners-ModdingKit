@@ -23,7 +23,7 @@ public interface ILobby
 | event [Closed](ILobby/Closed.md) | Raised on the game's thread when the player leaves a lobby, whichever way: from the character selection, from a match's pause menu, or by joining another game. A lobby stays open during its matches. |
 | event [ReadyChanged](ILobby/ReadyChanged.md) | Raised on the game's thread when a slot gets ready in the character selection, or cancels. It is raised as the change happens, before the slot holds it, so read the new value from the event. |
 | event [SlotChanged](ILobby/SlotChanged.md) | Raised on the game's thread at the end of a frame when a slot got or lost its player or bot, whichever game plays it. Not raised as a lobby opens or closes. |
-| [Open](ILobby/Open.md)(…) | Opens a lobby in a game mode, as the game's menu entries do. The character selection shows once the lobby has loaded. Leaving the lobby comes back to the main menu's first page. |
+| [Open](ILobby/Open.md)(…) | Opens a lobby in a game mode, as the game's menu entries do. The character selection shows once the lobby has loaded. Leaving the lobby comes back to the page it was opened from. |
 
 ## See Also
 
