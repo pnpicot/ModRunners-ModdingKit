@@ -11,6 +11,13 @@
 | struct [Point](./ModRunners.Api/Point.md) | A position, in the units of the space it belongs to. |
 | struct [Rectangle](./ModRunners.Api/Rectangle.md) | An axis-aligned rectangle, in the units of the space it belongs to. |
 
+## ModRunners.Api.Cameras namespace
+
+| public type | description |
+| --- | --- |
+| class [CameraPlacingEventArgs](./ModRunners.Api.Cameras/CameraPlacingEventArgs.md) | Where the camera looks in this frame and how far it is zoomed out, which a handler can change. |
+| interface [ICamera](./ModRunners.Api.Cameras/ICamera.md) | The camera that shows the level: the part of it the screen shows, and how far it is zoomed out. In a match, it frames every runner still in the race around the front runner, and zooms out as they spread. In a Solo run, it follows the runner and looks ahead of its speed. It can shake, and the game keeps its view inside the level. |
+
 ## ModRunners.Api.Drawing namespace
 
 | public type | description |

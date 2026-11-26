@@ -10,6 +10,7 @@ public interface IGame
 
 | name | description |
 | --- | --- |
+| [Camera](IGame/Camera.md) { get; } | The camera that shows the level. |
 | [Grapple](IGame/Grapple.md) { get; } | The colors of the runners' grapples. |
 | [Items](IGame/Items.md) { get; } | How items behave once used, on every runner. |
 | [Keyboard](IGame/Keyboard.md) { get; } | The keyboard, as gameplay reads it. |

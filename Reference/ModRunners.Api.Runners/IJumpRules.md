@@ -11,7 +11,7 @@ public interface IJumpRules
 | name | description |
 | --- | --- |
 | [AirJumpSpeed](IJumpRules/AirJumpSpeed.md) { get; set; } | The diagonal push of an air jump while a direction is held, 200 by default. |
-| [HoldTime](IJumpRules/HoldTime.md) { get; set; } | How long a held jump keeps pushing, 0.25 seconds by default. A jump held that long rises about 125 level units. |
+| [HoldTime](IJumpRules/HoldTime.md) { get; set; } | How long a held jump keeps pushing, 0.25 seconds by default, and a wall jump 0.65 of it. A jump held that long rises about 125 level units. |
 | [LedgeHopSpeed](IJumpRules/LedgeHopSpeed.md) { get; set; } | The speed, up and forward, of a runner hopping over a ledge it pushes against, 160 by default. |
 | [Thrust](IJumpRules/Thrust.md) { get; set; } | The jump's push while the button is held, 2876 by default. The upward speed it gives grows with it, to about 360 at the end of [`HoldTime`](./IJumpRules/HoldTime.md). |
 | [WallJumpAirAcceleration](IJumpRules/WallJumpAirAcceleration.md) { get; set; } | The push of holding a direction for 0.35 seconds after a wall hang, 600 by default, in place of [`Acceleration`](./IAirRules/Acceleration.md). |

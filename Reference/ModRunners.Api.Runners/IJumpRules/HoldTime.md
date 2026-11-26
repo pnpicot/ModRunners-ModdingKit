@@ -1,6 +1,6 @@
 # IJumpRules.HoldTime property
 
-How long a held jump keeps pushing, 0.25 seconds by default. A jump held that long rises about 125 level units.
+How long a held jump keeps pushing, 0.25 seconds by default, and a wall jump 0.65 of it. A jump held that long rises about 125 level units.
 
 ```csharp
 public TimeSpan HoldTime { get; set; }
